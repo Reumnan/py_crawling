@@ -108,3 +108,22 @@ print (soup.find_all(string=['[이주의해시태그-#네이버-클로바]쑥쑥
 print (soup.find_all(string='AI'))
 print (soup.find_all(string=re.compile('AI'))[0])
 # print (soup.find_all(string=re.compile('AI')))
+
+연습문제
+다음 사이트에서 링크가 되어 있는 모든 제목을 가져와서 출력합니다.
+http://media.daum.net/digital/
+
+- 참고코드: git 저장소에서 02_examples/crawling_seeko_title.py 를 참고
+- 프로그래밍은 스스로 작성을 해야 합니다. 정 이해하기 어려울 때만 참고코드를 보시면 좋을 것 같습니다.
+import requests
+from bs4 import BeautifulSoup
+
+
+res = requests.get('http://media.daum.net/digital/')
+soup = BeautifulSoup(res.content, 'html.parser')
+
+# find_all() 메서드를 사용해서 태그와 클래스이름으로 링크가 걸려있는 기사 타이틀을 가져오기
+[------------------------------------------------------]
+
+for num in range(len(link_title)):
+    print(link_title[num].get_text().strip())
